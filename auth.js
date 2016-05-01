@@ -39,7 +39,8 @@ function GenSignature(method, authpath, headers, params) {
     // Generate canonicalized headers
     var signedHeaders = genSignedHeaders(headers);
     for (item in signedHeaders.sort()) {
-        stringToSign += "\n" + item.toLowerCase() +":" + headers[item];
+        key = signedHeaders[item];
+        stringToSign += "\n" + key.toLowerCase() +":" + headers[key];
     }
 
     // Generate canonicalized resource
