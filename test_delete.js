@@ -1,16 +1,16 @@
-var https = require('https');
+var http = require('http');
 var auth = require('./auth');
 
 function SendRequest (method, path, headers, params) {
     var options = {
         hostname: 'pek3a.qingstor.com',
-        port: 443,
+        port: 80,
         method: method,
         path: path,
         headers: headers
     };
 
-    var req = https.request(options, function(res) {
+    var req = http.request(options, function(res) {
         console.log("statusCode: ", res.statusCode);
         console.log("headers: ", res.headers);
 
