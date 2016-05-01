@@ -1,0 +1,39 @@
+var https = require('https');
+var auth = require('./auth');
+
+function SendRequest (method, path, headers, params) {
+    var options = {
+        hostname: 'pek3a.qingstor.com',
+        port: 443,
+        method: method,
+        path: path,
+        headers: headers
+    };
+
+    var req = https.request(options, function(res) {
+        console.log("statusCode: ", res.statusCode);
+        console.log("headers: ", res.headers);
+
+        res.on('data', function(d) {
+            process.stdout.write(d);
+        });
+    });
+
+    req.end();
+
+    req.on('error', function(e) {
+        console.error(e);
+    });
+}
+
+method = "DELETE";
+authpath = "/bucketname/test.txt";
+headers = {};
+params = {};
+headers["Date"] = new Date().toUTCString();
+
+signature = auth.GenSignature(method, authpath, headers, params);
+authorization = auth.GenAuthorization(signature);
+headers["Authorization"] = authorization;
+console.log(headers);
+SendRequest(method, authpath, headers, params);
