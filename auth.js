@@ -21,20 +21,7 @@ function GenSignature(method, authpath, headers, params) {
 
     // Append time
     var dateStr = headers['X-QS-Date'] || "";
-    if (!dateStr) {
-        dateStr = params['X-QS-Date'] || "";
-        if (dateStr) {
-                stringToSign += "\n";
-        }
-    }
-    if (!dateStr) {
-        dateStr = headers['Date'] || "";
-        if (!dateStr) {
-            console.log("Error: Date not set");
-        } else {
-            stringToSign += "\n" + dateStr;
-        }
-    }
+    stringToSign += "\n" + dateStr;
 
     // Generate canonicalized headers
     var signedHeaders = genSignedHeaders(headers);
@@ -62,7 +49,7 @@ function genSignedHeaders(headers) {
     var signedHeaders = [];
     for (var key in headers) {
         if (key.toLowerCase().indexOf('x-qs-') === 0) {
-            signedHeaders.push(headers[key]);
+            signedHeaders.push(key);
         }
     }
     return signedHeaders;
