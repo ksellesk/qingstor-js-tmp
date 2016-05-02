@@ -20,7 +20,7 @@ function GenSignature(method, authpath, headers, params) {
     stringToSign += "\n" + ContentType + "\n" + ContentMD5;
 
     // Append time
-    var dateStr = headers['X-QS-Date'] || "";
+    var dateStr = headers['Date'] || "";
     stringToSign += "\n" + dateStr;
 
     // Generate canonicalized headers
