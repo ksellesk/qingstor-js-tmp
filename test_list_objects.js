@@ -3,7 +3,7 @@ var auth = require('./auth');
 
 function SendRequest (method, path, headers, params) {
     var options = {
-        hostname: 'yourbucket.pek3a.qingstor.com',
+        hostname: 'bucketname.pek3a.qingstor.com',
         port: 80,
         method: method,
         path: path,
@@ -27,7 +27,7 @@ function SendRequest (method, path, headers, params) {
 }
 
 method = "GET";
-authpath = "/yourbucket";
+authpath = "/bucketname";
 path = "/"
 headers = {};
 params = {};
