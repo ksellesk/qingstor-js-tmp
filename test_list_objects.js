@@ -28,7 +28,7 @@ function SendRequest (method, path, headers, params) {
 
 method = "GET";
 authpath = "/bucketname";
-path = "/"
+path = "/";
 headers = {};
 params = {};
 headers["Date"] = new Date().toUTCString();
