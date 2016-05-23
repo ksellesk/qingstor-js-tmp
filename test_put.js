@@ -6,7 +6,7 @@ function SendRequest (method, path, headers, params) {
         hostname: 'testbucket.pek3a.qingstor.com',
         port: 80,
         method: method,
-        path: "/test.jpg",
+        path: "/test.txt",
         headers: headers
     };
 
@@ -27,7 +27,7 @@ function SendRequest (method, path, headers, params) {
 }
 
 method = "PUT";
-authpath = "/testbucket/test.jpg";
+authpath = "/testbucket/test.txt";
 headers = {};
 params = {};
 headers["Date"] = new Date().toUTCString();
